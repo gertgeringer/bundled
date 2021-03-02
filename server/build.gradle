@@ -1,0 +1,42 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'com.moowork.node' version '1.3.1'
+}
+
+apply plugin: 'com.moowork.node'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task installDependencies(type: YarnTask) {
+    execOverrides {
+        it.workingDir = '../web'
+    }
+}
+
+task buildWeb(type: YarnTask) {
+    args = ['build']
+    execOverrides {
+        it.workingDir = '../web'
+    }
+}
+
+buildWeb.dependsOn installDependencies
+build.dependsOn buildWeb

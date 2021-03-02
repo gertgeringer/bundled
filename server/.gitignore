@@ -1,5 +1,10 @@
+# Created by https://www.gitignore.io/api/gradle
+
+### Gradle ###
 .gradle
-/build/
+**/build/
+
+out
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -12,10 +17,8 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
-server/src/main/resources/static/
-server/gradle/
-server/gradlew
-web/node_modules/
-web/yarn.lock
-web/src/assets/.gitkeep
-web/package-lock.json
+
+
+# End of https://www.gitignore.io/api/gradle
+
+src/main/resources/static
